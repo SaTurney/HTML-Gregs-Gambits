@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Greg's Gambits | About You</title>
+<link href="greg.css" rel="stylesheet" type="text/css" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<script type="text/javascript">
+function getName()
+{
+    var name = prompt("Please enter your name"," ");
+    document.getElementById('myname').innerHTML = name;
+}
+function getUsername()
+{
+    var username = prompt("What would you like your username to be?", " ");
+    document.getElementById('myusername').innerHTML = username;
+}
+function getAvatar()
+{
+    window.open('avatars.html');
+}
+function pickAvatar()
+{
+    var avatar = prompt("Enter the avatar you want:","");
+    document.getElementById('myavatar').innerHTML = avatar;
+}
+function getHomes()
+{
+    window.open('homes.html')
+}
+function pickHome()
+{
+    var yourhome = prompt("Enter the home you want!"," ");
+    document.getElementById('myhome').innerHTML = yourhome;
+}
+</script>
+</head>
+<body>
+<header>
+    <img src="images/superhero.jpg" width="120" height="120"
+    class="floatleft" />
+    <h1 id="logo"><em>GREG'S GAMBITS </em></h1>
+    <h2 align="center"><em>TELL GREG ABOUT YOU</em>
+    </h2>
+    <p>&nbsp;</p>
+    <nav>
+        <p>
+            <a href="index.html">Home</a>
+            <a href="index.html">About Greg</a>
+            <a href="play_games.html">Play a Game</a>
+            <a href="sign.html">Sign In</a>
+            <a href="index.html">Contact Us</a>
+            <a href="greg_aboutyou.html">Tell Greg About You</a>
+        </p>
+    </nav>
+        <section>
+        <p>
+          <button type="button" onclick="getName()"> 
+            Enter your name: </button>
+        Hello there, <span id = "myname"></span> 
+        </p>
+        <p><button type ="button" onclick="getUsername()">
+            Enter a username: </button>
+        Username: <span id = "myusername"></span>
+        </p>
+        <p><button type="button" onclick="getAvatar()">
+            See avatar choices here! </button>
+        </p>
+        <p><button type="button" onclick="pickAvatar()">
+            Select your avatar: </button><br />
+            The avatar you selected is: <span id ="myavatar"></span>
+        </p>
+        <p><button type="button" onclick="getHomes()">
+            See home choices here!</button>
+        </p>
+        <p><button type="button" onclick="pickHome()">
+            Enter the home you've chosen: </button><br />
+            The home you selected is: <span id ="myhome"></span>
+        </p>    
+            <p>&nbsp;</p>
+        </section>
+    <p>&nbsp;</p>
+    <footer>
+        <div align="center">Copyright &copy; 2019 Greg's Gambits<br />
+         <a href="mailto:Turney.Sabrina@gmail.com"> Turney.Sabrina@gmail.com</a>
+        </div>
+    </footer>
+</header>
+</body>
+</html>

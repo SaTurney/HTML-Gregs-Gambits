@@ -1,0 +1,126 @@
+<html>
+<head>
+	<title>Greg's Gambits | Boggle 2.0</title>
+	<link href="greg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+   
+    var timer = 0; var play = ""; var score = 0; var flag = 0;
+	var num = Math.floor(Math.random()*5) + 1; 
+	compWords = new Array; notAword = new Array;
+	playWords = new Array();
+	compWords = words(num);
+	yourWord = compWords[0];
+	setTimeout(function(){checkScore()},10000);
+    
+    function words(x)
+{
+	switch (x)
+	{
+	case 1:
+		var word = new Array("tlbaic","baltic","tical","alit","bail","bait","blat","laic","lati","tail","talc","tali","act","ail","ait","alb","alt","bal","bat","bit","cab","cat","lab","lac","lat","lib","lit","tab","tic","til","ab","at","bi","it");
+		break;		
+	case 2:
+		var word = new Array("ewaar","aware","area","ware","wear","are","awa","awe","ear","era","raw","wae","war","aw","we");
+		break;
+	case 3:
+		var word = new Array("coaenb","beacon","bacon","banco","beano","canoe","ocean","acne","aeon","bane","bean","bone","cane","cone","ebon","nabe","omce","ace","ban","ben","boa","cab","can","cob","con","eon","nab","nob","obe","one","no","an","on");
+		break;
+	case 4:
+		var word = new Array("sekyi","yikes","keys","kyes","sike","syke","key","kis","kye","sei","ski","sky","yes","is");
+		break;
+	case 5:
+		var word = new Array("gicnnda","dancing","caning","acing","canid","cnida","nicad","acid","agin","cadi","caid","cain","dang","ding","gadi","gain","aid","ain","and","ani","cad","can","cig", "dag", "bead", "bred", "break", "drey", "day", "boy", "broke", "rake", "dan", "dig", "din", "gad", "gan", "gid", "gin", "inn", "nag", "nan", "ad","ag", "an", "id", "in", "na");
+		break;
+	}
+	return word;
+}
+	
+    function boggle()
+{
+
+	
+	document.getElementById("letters").innerHTML = yourWord;
+    alert("Your letters are " + yourWord + "! Begin now!")
+
+	
+	while (play != "Q")
+	{
+
+
+		
+		play = prompt("enter a word or enter Q when done","Q");
+		playWords.push(play);
+			if(play != "Q")
+				document.getElementById("entries").innerHTML = playWords.toString()		
+	}
+	
+
+}
+	
+function checkScore()
+{
+
+	var complgth = compWords.length;
+	var playlgth = (playWords.length - 1);
+	for (var i = 0; i < playlgth; i++)
+	{
+		flag = 0;
+		for (var k = 0; k < complgth; k++)
+		{
+			if(playWords[i] == compWords[k])
+			{
+				score++;
+				flag = 1;
+			}
+		}
+		if (flag == 0)
+		notAword.push(playWords[i]);
+	}
+	
+	document.getElementById("result").innerHTML = ("Your score is " + score + ". The following entries are invalid: <br />" + notAword.toString());
+}
+	
+</script>
+</head>
+<body>
+	<header>
+		<img src="images/superhero.jpg" class="floatleft" />
+		<h1 id="logo"><em>Boggle 2.0</em></h1>
+ 		<h2 align="center">Play new and improved Boggle with Greg!</h2>
+		<p>&nbsp;</p>
+		
+
+<nav>
+        <p>
+            <a href="index.html">Home</a>
+            <a href="index.html">About Greg</a>
+            <a href="play_games.html">Play a Game</a>
+            <a href="sign.html">Sign In</a>
+            <a href="index.html">Contact Us</a>
+            <a href="greg_aboutyou.html">Tell Greg About You</a>
+        </p>
+    </nav>
+	<section>
+		<!-- create HTML to start the game, with initial display -->
+
+	<p>To begin playing Boggle against Greg, click "Start Now!"
+        Greg will give you a random set of numbers, and you must type as many words as you can from the numbers. 
+        Greg will tell you if you're typing gibberish though! Good Luck!</p>
+	
+	<p><input type="button" value = "Start Now!" onclick = "boggle();" />
+	<input type="button" value="Reset the Game" onclick="location.href='greg_boggle2.html'"; /> </p>
+	
+	<h2><br /><br />Letters you can use:<br /><div id = "letters">&nbsp;</div><br /></h2>
+	<h2>Your words so far: <br /><div id = "entries"> &nbsp; </div><br /></h2>
+	<h2>Results:<br /><div id = "result">&nbsp;</div></h2>
+
+
+		
+		
+	</section>
+
+</header>
+	<footer>Copyright &copy; 2019 Greg's Gambits<br />
+	<a href="mailto:Turney.Sabrina@gmail.com">Turney.Sabrina@gmail.com</a></footer>
+</body>
+</html>

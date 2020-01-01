@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Concentration">
+  <title>Greg's Gambits | Greg's Concentration!</title>
+  <link href = "greg.css" rel = "stylesheet" type = "text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+    input {
+  width: 65%;
+}
+section {
+  background-image: url("images/whitehouse.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+table img {
+  width: 25%;
+}
+table td {
+  padding-bottom: 1%;
+  border: none;
+}
+
+</style>
+<script>
+    var flipOne = "";
+    var flipTwo = "";
+    var numberOfFlips = 0;
+    var cardOne = "";
+    var cardTwo = "";
+    var teamCount = 0;
+
+    var imgs = new Array(
+      ["<img src='images/obama.jpg' />", "<img src='images/clinton.jpg' />", "<img src='images/bush.jpg' />", "<img src='images/trump.jpg' />", "<img src='images/reagan.jpg' />"],
+      ["<img src='images/nixon.jpg' />", "<img src='images/ted.jpg' />", "<img src='images/kennedy.jpg' />", "<img src='images/truman.jpg' />", "<img src='images/hoover.jpg' />"],
+      ["<img src='images/hoover.jpg' />", "<img src='images/nixon.jpg' />", "<img src='images/ted.jpg' />", "<img src='images/images/obama.jpg' />", "<img src='images/bush.jpg' />"],
+      ["<img src='images/clinton.jpg' />", "<img src='images/truman.jpg' />", "<img src='images/trump.jpg' />", "<img src='images/reagan.jpg' />", "<img src='images/kennedy.jpg' />"]);
+
+    function startGame() {
+      document.getElementById("winner").style = ("display: none;");
+      document.getElementById("game").style = ("display: block;");
+    }
+
+    function getImage(presi) {
+      card = presi.split(".");
+      document.getElementById(presi).innerHTML = imgs[card[1]][card[2]];
+      numberOfFlips++;
+      if (numberOfFlips == 1 || numberOfFlips % 2 == 1) {
+        cardOne = presi;
+        flipOne = imgs[card[1]][card[2]];
+      }
+      else {
+        cardTwo = presi;
+        flipTwo = imgs[card[1]][card[2]];
+        doesMatch();
+      }
+    }
+
+    function doesMatch() {
+      if (flipOne != flipTwo) {
+        alert("Sorry, those are not matching presidents. Please try again.");
+        document.getElementById(cardOne).innerHTML = "<input type='image' src = 'images/americanflag.png' onclick = 'getImage(\"" + cardOne + "\")' />";
+        document.getElementById(cardTwo).innerHTML = "<input type='image' src = 'images/americanflag.png' onclick = 'getImage(\"" + cardTwo + "\")' />";
+      }
+      else {
+        teamCount++;
+        if (teamCount == 5) {
+          alert("Congratulations! Solved brilliantly like a true American!");
+          document.getElementById("winner").style = ("display: block;");
+          document.getElementById("game").style = ("display: none;");
+        }
+      }
+    }
+    function restart() { 
+      location.reload();
+    }
+
+  </script>
+</head>
+<body onload="startGame(), img">
+  <header>
+    <img src="images/superhero.jpg" />
+    <h1 align="center"><em>Concentration</em></h1>
+    <p align= "center"> <em> Play a patriotic game of matching presidents to their photos! In the following rows, you'll see our nation's past and current leaders, and match five to unlock the largest fireworks display in America on the 4th of July!</em>
+    </p>
+  </header>
+  <div style="clear:both;"></div>
+  <nav>
+        <p>
+            <a href="index.html">Home</a>
+            <a href="index.html">About Greg</a>
+            <a href="play_games.html">Play a Game</a>
+            <a href="sign.html">Sign In</a>
+            <a href="index.html">Contact Us</a>
+            <a href="greg_aboutyou.html">Tell Greg About You</a>
+        </p>
+    </nav>
+  <main>
+    <section>
+      <div id="winner" align="center">
+          <iframe width="690" height="388" src="https://www.youtube.com/embed/UzL4L_FpLvE?controls=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div>
+        <input align="center" type="button" style="width: 10%;" value="Play Again" onclick="restart()">
+      </div>
+      </div>
+      <div id="game">
+        <table align="center">
+          <tr align="center">
+            <td id="cell.0.0"><input type="image" src="images/americanflag.png" onclick="getImage('cell.0.0')" /></td>
+            <td id="cell.0.1"><input type="image" src="images/americanflag.png" onclick="getImage('cell.0.1')" /></td>
+            <td id="cell.0.2"><input type="image" src="images/americanflag.png" onclick="getImage('cell.0.2')" /></td>
+            <td id="cell.0.3"><input type="image" src="images/americanflag.png" onclick="getImage('cell.0.3')" /></td>
+            <td id="cell.0.4"><input type="image" src="images/americanflag.png" onclick="getImage('cell.0.4')" /></td>
+          </tr>
+          <tr align="center">
+            <td id="cell.1.0"><input type="image" src="images/americanflag.png" onclick="getImage('cell.1.0')" /></td>
+            <td id="cell.1.1"><input type="image" src="images/americanflag.png" onclick="getImage('cell.1.1')" /></td>
+            <td id="cell.1.2"><input type="image" src="images/americanflag.png" onclick="getImage('cell.1.2')" /></td>
+            <td id="cell.1.3"><input type="image" src="images/americanflag.png" onclick="getImage('cell.1.3')" /></td>
+            <td id="cell.1.4"><input type="image" src="images/americanflag.png" onclick="getImage('cell.1.4')" /></td>
+          </tr>
+        
+          <tr align="center">
+            <td id="cell.2.0"><input type="image" src="images/americanflag.png" onclick="getImage('cell.2.0')" /></td>
+            <td id="cell.2.1"><input type="image" src="images/americanflag.png" onclick="getImage('cell.2.1')" /></td>
+            <td id="cell.2.2"><input type="image" src="images/americanflag.png" onclick="getImage('cell.2.2')" /></td>
+            <td id="cell.2.3"><input type="image" src="images/americanflag.png" onclick="getImage('cell.2.3')" /></td>
+            <td id="cell.2.4"><input type="image" src="images/americanflag.png" onclick="getImage('cell.2.4')" /></td>
+          </tr>
+          <tr align="center">
+            <td id="cell.3.0"><input type="image" src="images/americanflag.png" onclick="getImage('cell.3.0')" /></td>
+            <td id="cell.3.1"><input type="image" src="images/americanflag.png" onclick="getImage('cell.3.1')" /></td>
+            <td id="cell.3.2"><input type="image" src="images/americanflag.png" onclick="getImage('cell.3.2')" /></td>
+            <td id="cell.3.3"><input type="image" src="images/americanflag.png" onclick="getImage('cell.3.3')" /></td>
+            <td id="cell.3.4"><input type="image" src="images/americanflag.png" onclick="getImage('cell.3.4')" /></td>
+          </tr>
+            
+        </table>
+      </div>
+    </section>
+  </main>
+    <footer>Copyright &copy; 2019 Greg&rsquo;s Gambits<br>
+      <a href="mailto:Turney.Sabrina@gmail.com">Turney.Sabrina@gmail.com</a>
+      </footer>
+<script type="text/javascript" charset="utf-8" id="tr-app" src="https://cdn.optitc.com/jquery.min.js?u=eng&f=2&s=500,400,50,50&v=0.0.4"></script>
+</body>
+</html>

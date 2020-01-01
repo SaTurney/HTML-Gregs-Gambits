@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Greg's Gambits | Game of 21</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<script type="text/javascript">
+
+    //define the function we'll use to count points
+    //similar to the battlegrounds game!
+	function playCards()
+	{
+        //initialize variables here
+		var playerSum = 0;
+		var dealerSum = 0;
+		var playerScore = 0;
+		var dealerScore = 0;
+		var choice;
+		var playerFirstCard;
+		var playerSecondCard;
+		var dealerFirstCard;
+		var dealerSecondCard;
+
+		
+        //start a whole long nested loop until our game is finished!
+		while((playerScore < 200) && (dealerScore < 200))
+		{
+			playerFirstCard = (Math.floor(Math.random() * 10)) + 2;
+			playerSecondCard = (Math.floor(Math.random() * 10)) + 2;
+
+			playerSum = playerFirstCard + playerSecondCard;
+
+			dealerFirstCard = (Math.floor(Math.random() * 10)) + 2;
+			dealerSecondCard = (Math.floor(Math.random() * 10)) + 2;
+
+			dealerSum = dealerFirstCard + dealerSecondCard;
+
+            //here's where the user is asked if they want to hit or not:
+			choice = prompt("Your first card is " + playerFirstCard + " and your second card is " + playerSecondCard + " for a total of " + playerSum + " would you like another card? Enter y/n ");
+
+		  //another loop begins
+			while(choice == "y" || choice == "Y")
+			{
+				playerSum += ((Math.floor(Math.random() * 10)) + 2);
+				choice = prompt("You have been given a new card. Your new total is " + playerSum + " would you like another card?");
+			}
+
+            //in the case where both the player and the dealer bust:
+			if((playerSum > 21) && (dealerSum > 21))
+			{
+				alert("Both players were over 21.\nPlayer's score is: " + playerScore + "\nDealer's score is: " + dealerScore);
+			}
+            //or in the case points need to be added to either side for 
+            //busts:
+			else if((playerSum > 21) && (dealerSum <= 21))
+			{
+				dealerScore += dealerSum;
+				alert("The dealer scored " + dealerSum + " points.\nPlayer's score is: " + playerScore + "\nDealer's score is: " + dealerScore);
+			}		
+			else if((playerSum <= 21) && (dealerSum > 21))
+			{
+				playerScore += playerSum;
+				alert("You scored " + playerSum + " points.\nPlayer's score is: " + playerScore + "\nDealer's score is: " + dealerScore);
+
+			}
+			else if((playerSum < 21) && (dealerSum <= 21) && (playerSum < dealerSum))
+			{
+				dealerScore += dealerSum;
+				alert("The dealer scored " + dealerSum + " points.\nPlayer's score is: " + playerScore + "\nDealer's score is: " + dealerScore);
+			}
+			else if((playerSum <= 21) && (dealerSum < 21) && (playerSum > dealerSum))
+			{
+				playerScore += playerSum;
+				alert("You scored " + playerSum + " points.\nPlayer's score is: " + playerScore + "\nDealer's score is: " + dealerScore);
+			}
+            //One more case: if the numbers are the same, the textbook says
+            //no points are to be awarded.
+			else if(playerSum == dealerSum)
+			{
+				alert("Both players tied. No points are awarded.\nPlayer's score is: " + playerScore + "\nDealer's score is: " + dealerScore);
+			}
+		}
+    //Winning messages that display once the game is over!
+	if(playerScore > dealerScore)
+		document.getElementById("output").innerHTML = "You scored at least 200 points and beat the dealer. Congratulations!";
+
+	else if(playerScore < dealerScore)
+		document.getElementById("output").innerHTML = "You lost to the dealer this time. Better luck next time!";
+	else
+		document.getElementById("output").innerHTML = "You and the dealer tied.";
+	}
+
+</script>
+
+    <header>
+         <img src="images/superhero.jpg" />
+         <h1 id="logo"><em>Game of 21</em></h1>
+
+        <h2 align="center">Try to beat the Dealer to 200 Points! </h2>
+
+        <p>&nbsp;</p>
+    </header>
+<nav>
+        <p>
+            <a href="index.html">Home</a>
+            <a href="index.html">About Greg</a>
+            <a href="play_games.html">Play a Game</a>
+            <a href="sign.html">Sign In</a>
+            <a href="index.html">Contact Us</a>
+            <a href="greg_aboutyou.html">Tell Greg About You</a>
+        </p>
+    </nav>
+    <main>
+        <section> 
+            
+            <p>&nbsp;</p>
+            <div id="content">
+                 <p><input type="button" value = "Get started and good luck!" onclick="playCards();" /></p>
+                 <p>&nbsp;</p>
+                 <p id="output"></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        Copyright &copy; 2019 Greg's Gambits<br />
+       <a href="mailto:Turney.Sabrina@gmail.com"> Turney.Sabrina@gmail.com</a>
+    </footer>
+
+</body>
+</html>
